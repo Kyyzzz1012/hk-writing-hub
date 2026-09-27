@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HK Primary 4 & 5 English Writing Master Hub</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0284c7',
+                            600: '#0369a1',
+                            700: '#075985',
+                        },
+                        accent: {
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            500: '#f97316',
+                            600: '#ea580c',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Lexend', 'Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .highlight-connective { background-color: #fef08a; border-radius: 3px; padding: 0 4px; font-weight: 600; }
+        .highlight-vocab { background-color: #bbf7d0; border-radius: 3px; padding: 0 4px; font-weight: 600; }
+        .highlight-structure { background-color: #bfdbfe; border-radius: 3px; padding: 0 4px; font-weight: 600; }
+        .highlight-emotion { background-color: #fed7aa; border-radius: 3px; padding: 0 4px; font-weight: 600; }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col selection:bg-brand-500 selection:text-white">
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 sm:h-20">
+                <div class="flex items-center gap-3">
+                    <div class="bg-gradient-to-tr from-brand-600 to-sky-400 text-white p-2.5 rounded-2xl shadow-md">
+                        <i class="fa-solid fa-pen-nib text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="font-bold text-lg sm:text-xl text-slate-900 leading-tight">HK Primary English Writing Hub</h1>
+                        <p class="text-xs text-slate-500 font-medium">P4 & P5 Exam Ready • 20 Core Writing Topics</p>
+                    </div>
+                </div>
+
+                <!-- Nav Links -->
+                <nav class="hidden md:flex items-center space-x-1 lg:space-x-2">
+                    <button onclick="switchTab('topics')" id="nav-topics" class="nav-btn active px-3 py-2 rounded-xl text-sm font-semibold text-brand-600 bg-brand-50 hover:bg-brand-100 transition">
+                        <i class="fa-solid fa-list-check mr-1.5"></i>20 Topics Library
+                    </button>
+                    <button onclick="switchTab('vocab')" id="nav-vocab" class="nav-btn px-3 py-2 rounded-xl text-sm font-semibold text-slate-600 hover:text-brand-600 hover:bg-slate-100 transition">
+                        <i class="fa-solid fa-spell-check mr-1.5"></i>Vocab Vault
+                    </button>
+                    <button onclick="switchTab('models')" id="nav-models" class="nav-btn px-3 py-2 rounded-xl text-sm font-semibold text-slate-600 hover:text-brand-600 hover:bg-slate-100 transition">
+                        <i class="fa-solid fa-book-open mr-1.5"></i>Model Essays & Audio
+                    </button>
+                    <button onclick="switchTab('studio')" id="nav-studio" class="nav-btn px-3 py-2 rounded-xl text-sm font-semibold text-slate-600 hover:text-brand-600 hover:bg-slate-100 transition">
+                        <i class="fa-solid fa-laptop-code mr-1.5"></i>Outline & Draft Studio
+                    </button>
+                    <button onclick="switchTab('guide')" id="nav-guide" class="nav-btn px-3 py-2 rounded-xl text-sm font-semibold text-slate-600 hover:text-brand-600 hover:bg-slate-100 transition">
+                        <i class="fa-solid fa-award mr-1.5"></i>Exam Rubric & Tips
+                    </button>
+                </nav>
+
+                <!-- Mobile menu button -->
+                <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100 focus:outline-none">
+                    <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-4 space-y-2">
+            <button onclick="switchTab('topics'); toggleMobileMenu();" class="w-full text-left px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-brand-50 hover:text-brand-600">
+                <i class="fa-solid fa-list-check w-6"></i> 20 Topics Library
+            </button>
+            <button onclick="switchTab('vocab'); toggleMobileMenu();" class="w-full text-left px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-brand-50 hover:text-brand-600">
+                <i class="fa-solid fa-spell-check w-6"></i> Vocab Vault
+            </button>
+            <button onclick="switchTab('models'); toggleMobileMenu();" class="w-full text-left px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-brand-50 hover:text-brand-600">
+                <i class="fa-solid fa-book-open w-6"></i> Model Essays & Audio
+            </button>
+            <button onclick="switchTab('studio'); toggleMobileMenu();" class="w-full text-left px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-brand-50 hover:text-brand-600">
+                <i class="fa-solid fa-laptop-code w-6"></i> Outline & Draft Studio
+            </button>
+            <button onclick="switchTab('guide'); toggleMobileMenu();" class="w-full text-left px-3 py-2.5 rounded-lg text-sm font-semibold text-slate-700 hover:bg-brand-50 hover:text-brand-600">
+                <i class="fa-solid fa-award w-6"></i> Exam Rubric & Tips
+            </button>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+        <!-- Hero Welcome Banner -->
+        <div class="relative overflow-hidden bg-gradient-to-r from-brand-600 via-sky-600 to-indigo-600 text-white rounded-3xl p-6 sm:p-8 mb-8 shadow-lg">
+            <div class="relative z-10 max-w-3xl">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-white/20 backdrop-blur text-white mb-3">
+                    <i class="fa-solid fa-graduation-cap"></i> Designed for Age 9 • HK Primary 4 & Primary 5
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-2">Master HK English Exam Writing with Confidence!</h2>
+                <p class="text-sky-100 text-sm sm:text-base leading-relaxed mb-4">
+                    Explore 20 targeted writing prompts categorized into four core Hong Kong exam styles: Persuasive Letters, Narrative Stories, Personal Recounts, and Descriptive Writing.
+                </p>
+                <div class="flex flex-wrap gap-3">
+                    <button onclick="switchTab('topics')" class="bg-white text-brand-700 font-bold px-4 py-2.5 rounded-xl shadow hover:bg-brand-50 transition text-sm flex items-center gap-2">
+                        <i class="fa-solid fa-magnifying-glass"></i> Explore 20 Topics
+                    </button>
+                    <button onclick="switchTab('vocab')" class="bg-amber-400 text-slate-900 font-bold px-4 py-2.5 rounded-xl shadow hover:bg-amber-300 transition text-sm flex items-center gap-2">
+                        <i class="fa-solid fa-book-bookmark"></i> Open Vocab Vault
+                    </button>
+                    <button onclick="switchTab('models')" class="bg-brand-700/60 border border-white/30 text-white font-semibold px-4 py-2.5 rounded-xl hover:bg-brand-700/80 transition text-sm flex items-center gap-2">
+                        <i class="fa-solid fa-volume-high"></i> Exemplars & Audio
+                    </button>
+                </div>
+            </div>
+            <div class="absolute -right-8 -bottom-10 opacity-20 text-white text-[160px] pointer-events-none hidden lg:block">
+                <i class="fa-solid fa-pen-fancy"></i>
+            </div>
+        </div>
+
+        <!-- TAB 1: 20 TOPICS LIBRARY -->
+        <section id="tab-topics" class="tab-content block space-y-6">
+            <!-- Filter Bar & Search -->
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+                <div>
+                    <h3 class="font-bold text-slate-900 text-base sm:text-lg">Curated Topic Directory</h3>
+                    <p class="text-xs text-slate-500">Filter topics by category or search by keywords</p>
+                </div>
+
+                <!-- Instant Search Box -->
+                <div class="relative min-w-[240px] flex-grow md:flex-grow-0">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-slate-400 text-xs"></i>
+                    <input type="text" id="topic-search-input" oninput="onSearchTopics()" placeholder="Search title, prompt, or vocab..." class="w-full bg-slate-50 border border-slate-300 rounded-xl pl-8 pr-3 py-2 text-xs text-slate-800 focus:ring-2 focus:ring-brand-500 focus:bg-white focus:outline-none">
+                </div>
+
+                <!-- Category Pills -->
+                <div class="flex flex-wrap items-center gap-1.5" id="category-filters">
+                    <button onclick="filterTopics('all')" class="cat-btn active text-xs font-semibold px-3 py-1.5 rounded-xl bg-slate-900 text-white shadow-sm transition">All (20)</button>
+                    <button onclick="filterTopics('persuasive')" class="cat-btn text-xs font-semibold px-3 py-1.5 rounded-xl bg-slate-100 text-slate-700 hover:bg-amber-100 hover:text-amber-800 transition">✉️ Persuasive (5)</button>
+                    <button onclick="filterTopics('narrative')" class="cat-btn text-xs font-semibold px-3 py-1.5 rounded-xl bg-slate-100 text-slate-700 hover:bg-emerald-100 hover:text-emerald-800 transition">📖 Narrative (5)</button>
+                    <button onclick="filterTopics('recount')" class="cat-btn text-xs font-semibold px-3 py-1.5 rounded-xl bg-slate-100 text-slate-700 hover:bg-blue-100 hover:text-blue-800 transition">🎒 Recount (5)</button>
+                    <button onclick="filterTopics('descriptive')" class="cat-btn text-xs font-semibold px-3 py-1.5 rounded-xl bg-slate-100 text-slate-700 hover:bg-purple-100 hover:text-purple-800 transition">🎨 Descriptive (5)</button>
+                </div>
+            </div>
+
+            <!-- Topics Category Containers -->
+            <div id="topics-category-container" class="space-y-8">
+                <!-- Dynamically populated grouped topic sections -->
+            </div>
+        </section>
+
+        <!-- TAB 2: VOCABULARY VAULT (NEW) -->
+        <section id="tab-vocab" class="tab-content hidden space-y-6">
+            <!-- Header Summary -->
+            <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-3">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800">Exam Vocabulary Booster</span>
+                        <h3 class="text-xl font-bold text-slate-900 mt-1">High-Scoring Words & Upgraded Phrases</h3>
+                    </div>
+                    <span class="text-xs font-semibold text-slate-400"><i class="fa-solid fa-volume-high text-brand-500"></i> Tap speaker to listen</span>
+                </div>
+                <p class="text-xs sm:text-sm text-slate-600">
+                    Boost your exam scores in Hong Kong P4/P5 English exams by replacing overused basic words with vivid, descriptive vocabulary.
+                </p>
+            </div>
+
+            <!-- Upgraded Word Converter Grid -->
+            <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
+                <h4 class="font-bold text-slate-900 text-base flex items-center gap-2 border-b border-slate-200 pb-3">
+                    <i class="fa-solid fa-arrow-up-right-dots text-emerald-600"></i> Basic Word $\rightarrow$ Exam Upgrade Converter
+                </h4>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3" id="upgraded-words-grid">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <!-- Category Specific Vocabulary Lists -->
+            <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 pb-3">
+                    <h4 class="font-bold text-slate-900 text-base flex items-center gap-2">
+                        <i class="fa-solid fa-boxes-stacked text-brand-600"></i> Category Vocabulary Cards
+                    </h4>
+                    <div class="flex flex-wrap gap-1.5" id="vocab-category-selector">
+                        <button onclick="switchVocabCategory('all')" class="vcat-btn active px-3 py-1 rounded-xl text-xs font-bold bg-slate-900 text-white transition">All Categories</button>
+                        <button onclick="switchVocabCategory('persuasive')" class="vcat-btn px-3 py-1 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 transition">Persuasive</button>
+                        <button onclick="switchVocabCategory('narrative')" class="vcat-btn px-3 py-1 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 transition">Narrative</button>
+                        <button onclick="switchVocabCategory('recount')" class="vcat-btn px-3 py-1 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 transition">Recount</button>
+                        <button onclick="switchVocabCategory('descriptive')" class="vcat-btn px-3 py-1 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 transition">Descriptive</button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="vocab-cards-grid">
+                    <!-- Cards populated by JS -->
+                </div>
+            </div>
+
+            <!-- Sensory Words Palette -->
+            <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
+                <h4 class="font-bold text-slate-900 text-base flex items-center gap-2 border-b border-slate-200 pb-3">
+                    <i class="fa-solid fa-palette text-purple-600"></i> Sensory Word Palette (For Descriptive & Recount Writing)
+                </h4>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+                    <div class="p-4 rounded-2xl bg-sky-50 border border-sky-200 space-y-2">
+                        <h5 class="font-bold text-sky-900 flex items-center gap-1.5"><i class="fa-solid fa-eye"></i> Sight (Sights & Lights)</h5>
+                        <p class="text-slate-600 leading-relaxed">dazzling, sparkling, dark clouds, towering, crowded, scenic, vibrant, messy, tidy</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-amber-50 border border-amber-200 space-y-2">
+                        <h5 class="font-bold text-amber-900 flex items-center gap-1.5"><i class="fa-solid fa-ear-listen"></i> Sound (Hearing)</h5>
+                        <p class="text-slate-600 leading-relaxed">deafening, howling wind, roaring thunder, pattering rain, shouting hawkers, whimpering</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-rose-50 border border-rose-200 space-y-2">
+                        <h5 class="font-bold text-rose-900 flex items-center gap-1.5"><i class="fa-solid fa-cookie-bite"></i> Smell & Taste</h5>
+                        <p class="text-slate-600 leading-relaxed">mouth-watering, fragrant, sizzling, appetizing aroma, scrumptious, delicious, foul</p>
+                    </div>
+                    <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 space-y-2">
+                        <h5 class="font-bold text-emerald-900 flex items-center gap-1.5"><i class="fa-solid fa-heart"></i> Feelings & Emotions</h5>
+                        <p class="text-slate-600 leading-relaxed">thrilled, froze in fear, heart was pounding, delighted, relieved, grateful, overwhelmed</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 3: MODEL ESSAYS & AUDIO -->
+        <section id="tab-models" class="tab-content hidden space-y-6">
+            <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-200">
+                    <div>
+                        <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-brand-100 text-brand-700 mb-2">Exemplar Showcase</span>
+                        <h3 class="text-xl font-bold text-slate-900">High-Scoring Exam Model Samples</h3>
+                        <p class="text-xs sm:text-sm text-slate-500">Read and listen to top-grade writings tailored for HK Primary 4/5 mark schemes.</p>
+                    </div>
+
+                    <!-- Essay Selector Buttons -->
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="loadModelEssay(1)" id="essay-btn-1" class="essay-tab-btn active px-3 py-2 rounded-xl text-xs font-bold bg-brand-600 text-white transition">Persuasive Letter</button>
+                        <button onclick="loadModelEssay(2)" id="essay-btn-2" class="essay-tab-btn px-3 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">Narrative Story</button>
+                        <button onclick="loadModelEssay(3)" id="essay-btn-3" class="essay-tab-btn px-3 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">School Field Trip</button>
+                        <button onclick="loadModelEssay(4)" id="essay-btn-4" class="essay-tab-btn px-3 py-2 rounded-xl text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">Night Market</button>
+                    </div>
+                </div>
+
+                <!-- Essay View Options & Audio Controls -->
+                <div class="py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-slate-50 p-4 rounded-2xl my-4 border border-slate-200">
+                    <!-- Audio Controls -->
+                    <div class="flex items-center gap-2">
+                        <button onclick="speakCurrentEssay()" id="play-btn" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-4 py-2 rounded-xl text-xs sm:text-sm flex items-center gap-2 transition shadow-sm">
+                            <i class="fa-solid fa-play"></i> Listen Read-Aloud
+                        </button>
+                        <button onclick="stopSpeech()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold px-3 py-2 rounded-xl text-xs sm:text-sm flex items-center gap-1 transition">
+                            <i class="fa-solid fa-stop"></i> Stop
+                        </button>
+                        <span id="speech-status" class="text-xs text-slate-500 font-medium ml-2">Ready</span>
+                    </div>
+
+                    <!-- Highlight Filters -->
+                    <div class="flex flex-wrap items-center gap-2">
+                        <span class="text-xs font-bold text-slate-500 mr-1"><i class="fa-solid fa-highlighter"></i> Toggle Key Elements:</span>
+                        <label class="inline-flex items-center text-xs font-semibold cursor-pointer">
+                            <input type="checkbox" id="hl-connective" checked onchange="updateEssayHighlights()" class="rounded text-brand-600 focus:ring-0 mr-1">
+                            <span class="bg-yellow-200 px-1.5 py-0.5 rounded text-yellow-900">Connectives</span>
+                        </label>
+                        <label class="inline-flex items-center text-xs font-semibold cursor-pointer">
+                            <input type="checkbox" id="hl-vocab" checked onchange="updateEssayHighlights()" class="rounded text-brand-600 focus:ring-0 mr-1">
+                            <span class="bg-green-200 px-1.5 py-0.5 rounded text-green-900">Vocab / Adjectives</span>
+                        </label>
+                        <label class="inline-flex items-center text-xs font-semibold cursor-pointer">
+                            <input type="checkbox" id="hl-structure" checked onchange="updateEssayHighlights()" class="rounded text-brand-600 focus:ring-0 mr-1">
+                            <span class="bg-blue-200 px-1.5 py-0.5 rounded text-blue-900">Exam Format</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Active Essay Content Display Area -->
+                <div id="essay-display-container" class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 space-y-4 font-sans text-slate-800 leading-relaxed text-sm sm:text-base">
+                    <!-- Loaded dynamically via JS -->
+                </div>
+
+                <!-- Annotation Notes Footer -->
+                <div id="essay-breakdown-box" class="mt-6 p-4 rounded-2xl bg-amber-50 border border-amber-200">
+                    <h4 class="font-bold text-amber-900 text-sm flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-lightbulb text-amber-600"></i> Why This Piece Scores Full Marks in HK Exams:
+                    </h4>
+                    <ul id="essay-breakdown-list" class="list-disc list-inside text-xs sm:text-sm text-amber-800 space-y-1">
+                        <!-- Populated by JS -->
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 3: OUTLINE & DRAFT STUDIO -->
+        <section id="tab-studio" class="tab-content hidden space-y-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <!-- Left Column: Topic Selector & Guided Outline Builder (8 cols) -->
+                <div class="lg:col-span-8 space-y-6">
+                    <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
+                        <div class="flex items-center justify-between border-b border-slate-200 pb-4">
+                            <div>
+                                <span class="px-3 py-1 rounded-full text-xs font-bold bg-indigo-100 text-indigo-700">Interactive Studio</span>
+                                <h3 class="text-xl font-bold text-slate-900 mt-1">Guided Essay Outline Builder</h3>
+                            </div>
+                            <button onclick="resetStudio()" class="text-xs text-slate-500 hover:text-rose-600 font-semibold flex items-center gap-1">
+                                <i class="fa-solid fa-rotate-left"></i> Reset Fields
+                            </button>
+                        </div>
+
+                        <!-- Step 1: Select Topic -->
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Step 1: Choose a Topic to Plan</label>
+                            <select id="studio-topic-select" onchange="loadStudioTopic()" class="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 text-sm font-semibold text-slate-800 focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                                <!-- Options populated by JS -->
+                            </select>
+                        </div>
+
+                        <!-- Step 2: Selected Topic Information Banner -->
+                        <div id="studio-prompt-info" class="p-4 rounded-2xl bg-slate-100 border border-slate-200 text-xs sm:text-sm space-y-1">
+                            <span class="font-bold text-slate-900" id="studio-prompt-title">Topic Title</span>
+                            <p class="text-slate-600" id="studio-prompt-desc">Prompt description will appear here...</p>
+                        </div>
+
+                        <!-- Step 3: Paragraph-by-Paragraph Interactive Outline -->
+                        <div class="space-y-4">
+                            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">Step 2: Fill in Your 4-Paragraph Plan</label>
+
+                            <!-- Paragraph 1 -->
+                            <div class="p-4 rounded-2xl border border-slate-200 bg-slate-50/50 space-y-2">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-bold text-xs text-brand-700 bg-brand-100 px-2.5 py-1 rounded-lg">Paragraph 1: Introduction & Purpose</span>
+                                    <span class="text-xs text-slate-400" id="p1-hint">Hook & Main Idea</span>
+                                </div>
+                                <textarea id="outline-p1" rows="2" placeholder="e.g., Dear Principal Wong, I am writing to suggest reducing weekend homework because..." class="w-full text-sm p-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:bg-white focus:outline-none" oninput="updateWordCount()"></textarea>
+                            </div>
+
+                            <!-- Paragraph 2 -->
+                            <div class="p-4 rounded-2xl border border-slate-200 bg-slate-50/50 space-y-2">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-bold text-xs text-brand-700 bg-brand-100 px-2.5 py-1 rounded-lg">Paragraph 2: First Main Point / Initial Event</span>
+                                    <span class="text-xs text-slate-400" id="p2-hint">Point 1 + Reason</span>
+                                </div>
+                                <textarea id="outline-p2" rows="2" placeholder="e.g., First of all, students need sufficient sleep and rest after a long week..." class="w-full text-sm p-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:bg-white focus:outline-none" oninput="updateWordCount()"></textarea>
+                            </div>
+
+                            <!-- Paragraph 3 -->
+                            <div class="p-4 rounded-2xl border border-slate-200 bg-slate-50/50 space-y-2">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-bold text-xs text-brand-700 bg-brand-100 px-2.5 py-1 rounded-lg">Paragraph 3: Second Main Point / Climax & Solution</span>
+                                    <span class="text-xs text-slate-400" id="p3-hint">Point 2 / Conflict</span>
+                                </div>
+                                <textarea id="outline-p3" rows="2" placeholder="e.g., Secondly, having less homework gives us quality time to spend with our families..." class="w-full text-sm p-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:bg-white focus:outline-none" oninput="updateWordCount()"></textarea>
+                            </div>
+
+                            <!-- Paragraph 4 -->
+                            <div class="p-4 rounded-2xl border border-slate-200 bg-slate-50/50 space-y-2">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-bold text-xs text-brand-700 bg-brand-100 px-2.5 py-1 rounded-lg">Paragraph 4: Conclusion & Action / Reflection</span>
+                                    <span class="text-xs text-slate-400" id="p4-hint">Summary & Call to action</span>
+                                </div>
+                                <textarea id="outline-p4" rows="2" placeholder="e.g., In conclusion, I sincerely hope you will support this idea. Yours sincerely, Chris Wong." class="w-full text-sm p-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-brand-500 focus:bg-white focus:outline-none" oninput="updateWordCount()"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Action Controls -->
+                        <div class="flex items-center justify-between pt-2">
+                            <div class="text-xs text-slate-500 font-semibold">
+                                Estimated Total Words: <span id="word-count-display" class="text-brand-600 font-bold text-sm">0</span> / 100-120 words (HK P4/P5 target)
+                            </div>
+                            <button onclick="copyFullDraft()" class="bg-slate-900 hover:bg-slate-800 text-white font-bold px-4 py-2.5 rounded-xl text-xs sm:text-sm flex items-center gap-2 transition shadow">
+                                <i class="fa-solid fa-copy"></i> Copy Full Draft
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Live Helper & Vocabulary Cheat Sheet (4 cols) -->
+                <div class="lg:col-span-4 space-y-6">
+                    <!-- Helper Bank -->
+                    <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
+                        <h4 class="font-bold text-slate-900 text-base flex items-center gap-2 border-b border-slate-200 pb-3">
+                            <i class="fa-solid fa-wand-magic-sparkles text-amber-500"></i> Topic Word Helper
+                        </h4>
+                        <p class="text-xs text-slate-500">Click any phrase to copy it into your memory!</p>
+
+                        <div id="dynamic-word-bank" class="space-y-3">
+                            <!-- Populated dynamically based on topic selection -->
+                        </div>
+                    </div>
+
+                    <!-- Exam Real-time Checklist -->
+                    <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-3">
+                        <h4 class="font-bold text-slate-900 text-base flex items-center gap-2 border-b border-slate-200 pb-3">
+                            <i class="fa-solid fa-square-check text-emerald-500"></i> Exam Success Checklist
+                        </h4>
+                        <div class="space-y-2 text-xs font-semibold text-slate-700">
+                            <label class="flex items-center gap-2 cursor-pointer p-1.5 hover:bg-slate-50 rounded-lg">
+                                <input type="checkbox" class="rounded text-brand-600 focus:ring-0">
+                                <span>Used clear 4-paragraph structure</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer p-1.5 hover:bg-slate-50 rounded-lg">
+                                <input type="checkbox" class="rounded text-brand-600 focus:ring-0">
+                                <span>Included at least 3 connectives (First, Secondly, However)</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer p-1.5 hover:bg-slate-50 rounded-lg">
+                                <input type="checkbox" class="rounded text-brand-600 focus:ring-0">
+                                <span>Used vivid adjectives (e.g. swift, bright, exhausting)</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer p-1.5 hover:bg-slate-50 rounded-lg">
+                                <input type="checkbox" class="rounded text-brand-600 focus:ring-0">
+                                <span>Correct letter salutation and sign-off</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer p-1.5 hover:bg-slate-50 rounded-lg">
+                                <input type="checkbox" class="rounded text-brand-600 focus:ring-0">
+                                <span>Checked tense consistency (Past for recount, Present for opinion)</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 4: EXAM RUBRIC & TIPS GUIDE -->
+        <section id="tab-guide" class="tab-content hidden space-y-6">
+            <!-- Rubric Cards -->
+            <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-6">
+                <div>
+                    <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800">HK Exam Success Formula</span>
+                    <h3 class="text-xl font-bold text-slate-900 mt-1">How HK Primary Writing Exams Are Graded</h3>
+                    <p class="text-xs sm:text-sm text-slate-500">Breakdown of the 4 key criteria markers look for in Primary 4 and Primary 5 assessment papers.</p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="p-4 rounded-2xl bg-blue-50 border border-blue-200 space-y-2">
+                        <div class="w-8 h-8 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-sm">1</div>
+                        <h4 class="font-bold text-blue-900 text-sm">Content (30%)</h4>
+                        <p class="text-xs text-blue-800 leading-relaxed">Relevant to prompt, detailed explanation of ideas, clear purpose and logical flow without off-topic sentences.</p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 space-y-2">
+                        <div class="w-8 h-8 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold text-sm">2</div>
+                        <h4 class="font-bold text-emerald-900 text-sm">Language & Tenses (30%)</h4>
+                        <p class="text-xs text-emerald-800 leading-relaxed">Correct subject-verb agreement, accurate tenses (Past tense for stories/recounts, Present tense for letters/opinions).</p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-purple-50 border border-purple-200 space-y-2">
+                        <div class="w-8 h-8 rounded-xl bg-purple-600 text-white flex items-center justify-center font-bold text-sm">3</div>
+                        <h4 class="font-bold text-purple-900 text-sm">Structure & Format (20%)</h4>
+                        <p class="text-xs text-purple-800 leading-relaxed">Proper 4-paragraph layout, standard formal/informal letter headers (Dear..., Yours sincerely), and transitional connectives.</p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-amber-50 border border-amber-200 space-y-2">
+                        <div class="w-8 h-8 rounded-xl bg-amber-600 text-white flex items-center justify-center font-bold text-sm">4</div>
+                        <h4 class="font-bold text-amber-900 text-sm">Vocabulary & Tone (20%)</h4>
+                        <p class="text-xs text-amber-800 leading-relaxed">Upgraded vocabulary (e.g. *exhausting* instead of *tired*, *promptly* instead of *fast*), varied sentence starters, and correct spelling.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Essential Connectives & Transitions Cheat Sheet -->
+            <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm space-y-4">
+                <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                    <i class="fa-solid fa-link text-brand-600"></i> Must-Know Connectives for Primary 4 & 5
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs sm:text-sm">
+                    <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
+                        <h5 class="font-bold text-brand-700">Ordering Ideas</h5>
+                        <ul class="space-y-1 text-slate-600">
+                            <li>• First of all, / To begin with,</li>
+                            <li>• Secondly, / In addition,</li>
+                            <li>• Furthermore, / Moreover,</li>
+                            <li>• Finally, / Lastly,</li>
+                        </ul>
+                    </div>
+                    <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
+                        <h5 class="font-bold text-emerald-700">Contrast & Causes</h5>
+                        <ul class="space-y-1 text-slate-600">
+                            <li>• However, / Nevertheless,</li>
+                            <li>• Although / Even though...</li>
+                            <li>• As a result, / Therefore,</li>
+                            <li>• Because of this,</li>
+                        </ul>
+                    </div>
+                    <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
+                        <h5 class="font-bold text-purple-700">Story Transitions</h5>
+                        <ul class="space-y-1 text-slate-600">
+                            <li>• All of a sudden, / Suddenly,</li>
+                            <li>• Without hesitation,</li>
+                            <li>• To my surprise,</li>
+                            <li>• Looking back, I realized that...</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 py-6 mt-12">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs text-slate-500 space-y-2">
+            <p class="font-semibold text-slate-700">Hong Kong Primary 4 & 5 English Writing Practice Resource</p>
+            <p>Designed for independent learning, school test prep, and HKAT writing practice for 9-year-olds.</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification Popup -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-slate-900 text-white text-xs font-semibold px-4 py-3 rounded-2xl shadow-xl flex items-center gap-2 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none z-50">
+        <i class="fa-solid fa-circle-check text-emerald-400 text-base"></i>
+        <span id="toast-msg">Action performed!</span>
+    </div>
+
+    <script>
+        // ----------------------------------------------------
+        // EXTENDED VOCABULARY DATA
+        // ----------------------------------------------------
+        const BASIC_TO_UPGRADED = [
+            { basic: "very good / nice", upgraded: "exceptional / outstanding", example: "The performance was outstanding." },
+            { basic: "very big", upgraded: "colossal / massive", example: "We saw a colossal building in Central." },
+            { basic: "very small", upgraded: "miniature / tiny", example: "A tiny stray puppy was whimpering." },
+            { basic: "happy", upgraded: "delighted / overjoyed", example: "I was overjoyed when I won the race." },
+            { basic: "sad", upgraded: "heartbroken / gloomy", example: "The gloomy weather matched my mood." },
+            { basic: "tired", upgraded: "fatigued / exhausted", example: "After hiking, we were completely exhausted." },
+            { basic: "said", upgraded: "exclaimed / asserted", example: "'Stop!' exclaimed the brave monitor." },
+            { basic: "scared", upgraded: "terrified / startled", example: "The thunder left us startled." },
+            { basic: "fast / quickly", upgraded: "swiftly / promptly", example: "He swiftly finished his homework." }
+        ];
+
+        const DETAILED_VOCAB_BANK = [
+            // Persuasive
+            { word: "sufficient rest", cat: "persuasive", pos: "noun phrase", translation: "充足的休息", example: "Students need sufficient rest to concentrate in school.", topic: "Topic 1" },
+            { word: "academic balance", cat: "persuasive", pos: "noun phrase", translation: "學業平衡", example: "Maintaining an academic balance is essential for young learners.", topic: "Topic 1" },
+            { word: "single-use plastic", cat: "persuasive", pos: "noun", translation: "一次性塑膠", example: "We should ban single-use plastic in our school canteen.", topic: "Topic 2" },
+            { word: "boost morale", cat: "persuasive", pos: "verb phrase", translation: "提振士氣", example: "A no-uniform day will boost student morale.", topic: "Topic 3" },
+            { word: "digital eye strain", cat: "persuasive", pos: "noun phrase", translation: "數碼眼睛疲勞", example: "Excessive screen time causes digital eye strain.", topic: "Topic 4" },
+            { word: "foster reading culture", cat: "persuasive", pos: "verb phrase", translation: "培養閱讀風氣", example: "Classroom corners foster a strong reading culture.", topic: "Topic 5" },
+
+            // Narrative
+            { word: "filled with curiosity", cat: "narrative", pos: "idiom", translation: "充滿好奇心", example: "I opened the wrapped box filled with curiosity.", topic: "Topic 6" },
+            { word: "whimpering sound", cat: "narrative", pos: "noun phrase", translation: "嗚咽聲/哽咽聲", example: "We heard a whimpering sound behind the bush.", topic: "Topic 7" },
+            { word: "torrential rain", cat: "narrative", pos: "noun phrase", translation: "傾盆大雨", example: "Torrential rain flooded the streets in minutes.", topic: "Topic 8" },
+            { word: "froze in fear", cat: "narrative", pos: "verb phrase", translation: "嚇得僵住", example: "I froze in fear when the dog barked.", topic: "Topic 8" },
+            { word: "scrambled out of bed", cat: "narrative", pos: "verb phrase", translation: "急忙爬起床", example: "Having overslept, I scrambled out of bed.", topic: "Topic 9" },
+            { word: "vanished into thin air", cat: "narrative", pos: "idiom", translation: "憑空消失", example: "The class trophy seemed to have vanished into thin air.", topic: "Topic 10" },
+
+            // Recount
+            { word: "interactive exhibits", cat: "recount", pos: "noun phrase", translation: "互動展品", example: "The Science Museum features interactive exhibits.", topic: "Topic 11" },
+            { word: "scenic scenery", cat: "recount", pos: "noun phrase", translation: "優美的風景", example: "We admired the scenic scenery from the cable car.", topic: "Topic 12" },
+            { word: "sprinted across", cat: "recount", pos: "verb phrase", translation: "衝過", example: "The runner sprinted across the finish line.", topic: "Topic 13" },
+            { word: "meaningful cause", cat: "recount", pos: "noun phrase", translation: "有意義的事業/活動", example: "Selling flags is a meaningful cause to help seniors.", topic: "Topic 14" },
+            { word: "sense of achievement", cat: "recount", pos: "noun phrase", translation: "成就感", example: "Learning to ride a bike gave me a sense of achievement.", topic: "Topic 15" },
+
+            // Descriptive
+            { word: "bright cheerful eyes", cat: "descriptive", pos: "phrase", translation: "明亮歡快的眼睛", example: "My best friend has bright cheerful eyes.", topic: "Topic 16" },
+            { word: "dazzling neon signs", cat: "descriptive", pos: "noun phrase", translation: "璀璨的霓虹燈", example: "Temple Street was lit with dazzling neon signs.", topic: "Topic 17" },
+            { word: "spacious sanctuary", cat: "descriptive", pos: "noun phrase", translation: "寬敞的庇護所/房間", example: "My dream bedroom will be my spacious sanctuary.", topic: "Topic 18" },
+            { word: "reunion dinner", cat: "descriptive", pos: "noun phrase", translation: "團年飯/重聚晚餐", example: "We enjoy a delicious reunion dinner during the festival.", topic: "Topic 19" },
+            { word: "thrilled to invite", cat: "descriptive", pos: "phrase", translation: "非常高興邀請", example: "I am thrilled to invite you to my birthday party.", topic: "Topic 20" }
+        ];
+
+        // Categories Map for Grouped View
+        const CATEGORIES_INFO = {
+            persuasive: { title: "Output 1: Persuasive & Opinion Writing (Letters & Articles)", color: "amber", icon: "fa-envelope-open-text", badge: "bg-amber-100 text-amber-800 border-amber-300" },
+            narrative: { title: "Output 2: Narratives & Stories (Plot-Driven)", color: "emerald", icon: "fa-book-bookmark", badge: "bg-emerald-100 text-emerald-800 border-emerald-300" },
+            recount: { title: "Output 3: Personal Recounts & Experiences", color: "blue", icon: "fa-camera-retro", badge: "bg-blue-100 text-blue-800 border-blue-300" },
+            descriptive: { title: "Output 4: Descriptive & Practical Writing", color: "purple", icon: "fa-pen-ruler", badge: "bg-purple-100 text-purple-800 border-purple-300" }
+        };
+
+        // ----------------------------------------------------
+        // DATA: ALL 20 HK PRIMARY WRITING TOPICS
+        // ----------------------------------------------------
+        const TOPICS_DATA = [
+            // CATEGORY 1: PERSUASIVE & OPINION WRITING (1-5)
+            {
+                id: 1,
+                cat: 'persuasive',
+                title: '1. Letter to the Principal: Reduce Weekend Homework',
+                type: 'Formal Persuasive Letter',
+                prompt: 'Write a letter to your principal, Mr. Wong, persuading him to limit homework given over weekends.',
+                structure: 'Salutation → Reason 1 (Rest & Sleep) → Reason 2 (Family bonding & Hobbies) → Solution/Counter → Formal Sign-off',
+                vocab: ['sufficient rest', 'exhausting week', 'quality family time', 'extracurricular activities', 'academic balance'],
+                sampleId: 1
+            },
+            {
+                id: 2,
+                cat: 'persuasive',
+                title: '2. Letter to Editor: Use Reusable Lunch Boxes',
+                type: 'Letter to School Magazine',
+                prompt: 'Write a letter to the editor encouraging students to bring reusable food containers to cut plastic waste.',
+                structure: 'Purpose statement → Problem of disposable plastics → Environmental benefits → Practical eco-tips → Action call',
+                vocab: ['single-use plastic', 'environmental pollution', 'reusable containers', 'reduce waste', 'eco-friendly habits'],
+                sampleId: 1
+            },
+            {
+                id: 3,
+                cat: 'persuasive',
+                title: '3. Letter to Principal: Monthly "No Uniform Day"',
+                type: 'Formal Persuasive Letter',
+                prompt: 'Propose a once-a-month casual dress day to boost student morale and self-expression.',
+                structure: 'Purpose → Reason 1 (Boost student spirit) → Reason 2 (Express creativity) → Address concerns (Dress code rule) → Conclusion',
+                vocab: ['boost morale', 'self-expression', 'school spirit', 'charity donation', 'sense of belonging'],
+                sampleId: 1
+            },
+            {
+                id: 4,
+                cat: 'persuasive',
+                title: '4. Letter to Editor: Managing Screen Time',
+                type: 'Opinion Article / Letter',
+                prompt: 'Express your opinion on setting healthy daily time limits on tablets and mobile phones for primary students.',
+                structure: 'State view on screen time → Danger of excessive gaming → Benefits of outdoor games → Suggested daily rules → Conclusion',
+                vocab: ['digital eye strain', 'screen addiction', 'physical health', 'outdoor activities', 'healthy balance'],
+                sampleId: 1
+            },
+            {
+                id: 5,
+                cat: 'persuasive',
+                title: '5. Letter to Principal: Classroom Reading Corners',
+                type: 'Formal Persuasive Letter',
+                prompt: 'Suggest setting up a cozy reading book corner in every classroom to encourage daily reading habits.',
+                structure: 'Introduction → Benefit 1 (Easy access to books) → Benefit 2 (Improves English vocabulary) → Practical arrangement → Sign-off',
+                vocab: ['cozy corner', 'foster reading culture', 'expand vocabulary', 'book donation', 'peaceful environment'],
+                sampleId: 1
+            },
+
+            // CATEGORY 2: NARRATIVES & STORIES (6-10)
+            {
+                id: 6,
+                cat: 'narrative',
+                title: '6. A Surprising Birthday Present',
+                type: 'Narrative Story',
+                prompt: 'Write a story about receiving an unexpected mystery gift box on your 9th birthday and what happened next.',
+                structure: 'Setting the scene → Unwrapping mystery box → Unexpected discovery → Exciting climax → Happy ending',
+                vocab: ['wrapped in shiny paper', 'filled with curiosity', 'gasped in shock', 'unforgettable surprise', 'beamed with joy'],
+                sampleId: 2
+            },
+            {
+                id: 7,
+                cat: 'narrative',
+                title: '7. The Lost Dog in the Park',
+                type: 'Narrative Story',
+                prompt: 'Narrate an adventure where you found a lost puppy with a missing tag in a park and helped reunite it with its owner.',
+                structure: 'Walking in park → Hearing whimpering noise → Finding the dog → Searching for clues → Emotional reunion',
+                vocab: ['whimpering sound', 'frightened puppy', 'checked the collar', 'put up posters', 'grateful owner'],
+                sampleId: 2
+            },
+            {
+                id: 8,
+                cat: 'narrative',
+                title: '8. An Unforgettable Rainy Day',
+                type: 'Narrative Story',
+                prompt: 'Tell a story about getting caught in a sudden black rainstorm or typhoon signal on your walk home from school.',
+                structure: 'Sunny morning start → Sudden dark clouds & heavy downpour → Shelter under store canopy → Helping a classmate → Reaching home',
+                vocab: ['sudden downpour', 'pattering rain drops', 'soaked to the skin', 'howling wind', 'safe and sound'],
+                sampleId: 2
+            },
+            {
+                id: 9,
+                cat: 'narrative',
+                title: '9. The Day Everything Went Wrong',
+                type: 'Humorous Narrative',
+                prompt: 'Write a narrative recounting a funny day full of minor accidents (oversleeping, wrong uniform, forgotten lunchbox).',
+                structure: 'Alarm failed → Rush in the morning → Minor accidents at school → Resolving the day → Lesson learned',
+                vocab: ['overslept', 'scrambled out of bed', 'mixed up timetable', 'sigh of relief', 'laugh it off'],
+                sampleId: 2
+            },
+            {
+                id: 10,
+                cat: 'narrative',
+                title: '10. A Mystery in the Classroom',
+                type: 'Mystery Story',
+                prompt: 'Investigate the mystery of the missing class mascot or teacher trophy during recess.',
+                structure: 'Missing item discovered → Searching for clues → Questioning classmates → Surprising discovery → Mystery solved',
+                vocab: ['vanished into thin air', 'detective skills', 'clue on the floor', 'misunderstanding', 'gasp of surprise'],
+                sampleId: 2
+            },
+
+            // CATEGORY 3: PERSONAL RECOUNTS (11-15)
+            {
+                id: 11,
+                cat: 'recount',
+                title: '11. A Memorable School Field Trip',
+                type: 'Personal Recount',
+                prompt: 'Recount a school excursion to the Hong Kong Science Museum or Ocean Park with your class.',
+                structure: 'Excited morning departure → Interactive exhibits/rides → Picnic lunch with friends → Heading back → Final reflections',
+                vocab: ['boarded the coach', 'fascinating exhibits', 'interactive experiments', 'cheered loudly', 'treasured memory'],
+                sampleId: 3
+            },
+            {
+                id: 12,
+                cat: 'recount',
+                title: '12. My Favorite Holiday Trip',
+                type: 'Personal Recount',
+                prompt: 'Describe your favorite family vacation experience abroad or on a local staycation.',
+                structure: 'Destination intro → Highlight activity 1 → Local delicious food experience → Favorite moment → Reflection',
+                vocab: ['scenic scenery', 'mouth-watering cuisine', 'unforgettable sightseeing', 'photographed moments', 'broadened horizons'],
+                sampleId: 3
+            },
+            {
+                id: 13,
+                cat: 'recount',
+                title: '13. An Inter-School Sports Day',
+                type: 'Personal Recount',
+                prompt: 'Recount the high energy, relay races, and sportsmanship at your school Sports Day.',
+                structure: 'Opening ceremony → Participating/cheering in races → Tense final relay → Medal ceremony → Sportsmanship conclusion',
+                vocab: ['spectator stands', 'deafening cheers', 'sprinted across the finish line', 'teamwork and effort', 'proud moment'],
+                sampleId: 3
+            },
+            {
+                id: 14,
+                cat: 'recount',
+                title: '14. Participating in a Charity Event',
+                type: 'Personal Recount',
+                prompt: 'Describe volunteering for a school Flag Day donation drive or charity walkathon in your community.',
+                structure: 'Early morning briefing → Selling flags/walking for charity → Generous donors → Counting donations → Feeling fulfilled',
+                vocab: ['generous passers-by', 'flag sticker collection', 'raise funds', 'meaningful cause', 'warmed my heart'],
+                sampleId: 3
+            },
+            {
+                id: 15,
+                cat: 'recount',
+                title: '15. Overcoming a Challenge (New Skill)',
+                type: 'Personal Recount',
+                prompt: 'Write about the struggles and ultimate success of learning to swim, ride a bicycle, or play an instrument.',
+                structure: 'Initial hesitation/fear → Practice and falls → Encouragement from parents/coach → Success moment → Self-pride',
+                vocab: ['struggled initially', 'perseverance', 'practice makes perfect', 'overcame my fear', 'sense of achievement'],
+                sampleId: 3
+            },
+
+            // CATEGORY 4: DESCRIPTIVE & PRACTICAL (16-20)
+            {
+                id: 16,
+                cat: 'descriptive',
+                title: '16. My Best Friend',
+                type: 'Descriptive Essay',
+                prompt: 'Describe your best friend’s physical appearance, personality traits, and why your bond is special.',
+                structure: 'Introduction of friend → Physical description & smile → Personality & shared hobbies → Why friendship matters',
+                vocab: ['bright cheerful eyes', 'trustworthy and caring', 'share common interests', 'lend a helping hand', 'inseparable friends'],
+                sampleId: 4
+            },
+            {
+                id: 17,
+                cat: 'descriptive',
+                title: '17. A Busy Night Market in Hong Kong',
+                type: 'Descriptive Essay',
+                prompt: 'Use sensory details (sights, sounds, smells) to paint a vivid picture of a lively street market in HK.',
+                structure: 'Arrival at market → Visual neon lights & crowd → Smells of street food → Sounds of bargaining hawkers → Conclusion',
+                vocab: ['dazzling neon signs', 'sizzling street snacks', 'bustling crowds', 'shouting hawkers', 'vibrant atmosphere'],
+                sampleId: 4
+            },
+            {
+                id: 18,
+                cat: 'descriptive',
+                title: '18. My Dream Bedroom',
+                type: 'Descriptive Essay',
+                prompt: 'Describe your ideal dream bedroom layout, gadgets, and personal study space.',
+                structure: 'General room entry → Main bed & furniture layout → Gadget/Hobby wall → Study desk & lighting → Personal sanctuary',
+                vocab: ['spacious sanctuary', 'cozy bookshelf', 'soft warm lighting', 'neatly organized desk', 'peaceful haven'],
+                sampleId: 4
+            },
+            {
+                id: 19,
+                cat: 'descriptive',
+                title: '19. Mid-Autumn Festival Celebration',
+                type: 'Descriptive Essay',
+                prompt: 'Describe how your family celebrates the Mid-Autumn festival with lanterns, mooncakes, and moon-gazing.',
+                structure: 'Festive preparation → Family reunion dinner → Carrying colorful lanterns → Eating mooncakes & gazing at full moon',
+                vocab: ['colorful paper lanterns', 'delicious lotus seed mooncakes', 'glowing full moon', 'reunion dinner', 'festive atmosphere'],
+                sampleId: 4
+            },
+            {
+                id: 20,
+                cat: 'descriptive',
+                title: '20. Party Invitation Letter to a Friend',
+                type: 'Informal Letter / Email',
+                prompt: 'Write an informal letter inviting your friend, Alex, to your upcoming 10th birthday celebration outing.',
+                structure: 'Friendly opening greeting → Event date, time & place details → Fun planned activities/food → RSVP request & friendly sign-off',
+                vocab: ['hope you are doing well', 'thrilled to invite you', 'scrumptious birthday cake', 'looking forward to', 'warmest regards'],
+                sampleId: 4
+            }
+        ];
+
+        // ----------------------------------------------------
+        // MODEL ESSAYS DATABASE WITH MARKUP
+        // ----------------------------------------------------
+        const MODEL_ESSAYS = {
+            1: {
+                title: "Topic 1 Exemplar: Formal Persuasive Letter to Principal",
+                type: "Persuasive Letter • P4/P5 Exam Target",
+                rawText: `Dear Principal Wong,\n\nI am writing on behalf of my classmates to share a suggestion regarding our weekend homework. Currently, many students receive a large amount of homework on Fridays, which takes up most of our Saturdays and Sundays. I strongly believe that the school should reduce the amount of homework given over the weekend.\n\nFirst of all, students need sufficient rest after a long and exhausting week of school. Spending entire weekends completing worksheets leaves us feeling tired when Monday arrives. Having less homework would allow us to get enough sleep, exercise outdoors, and return to school feeling refreshed.\n\nSecondly, reducing weekend homework gives us quality time to spend with our families and pursue extracurricular interests. Weekends are the best opportunity for children to bond with parents through outdoor activities or practice creative arts. These activities are equally important for our growth.\n\nSome teachers might worry that less homework will lower our academic standard. However, teachers could assign shorter, revision-based tasks or online reading exercises instead. This ensures we still revise key concepts without feeling overwhelmed.\n\nThank you very much for taking the time to consider my suggestion. I sincerely hope you will support this idea.\n\nYours sincerely,\nChris Wong\nClass 4B Student Representative`,
+                htmlContent: `
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest border-b pb-2 mb-4">Exam Format: Formal Letter Layout</p>
+                <p class="font-bold text-slate-800"><span class="highlight-structure">Dear Principal Wong,</span></p>
+                <p>I am writing on behalf of my classmates to share a suggestion regarding our weekend homework. Currently, many students receive a heavy load of assignments. I <span class="highlight-vocab">strongly believe</span> that our school should reduce weekend homework.</p>
+                <p><span class="highlight-connective">First of all,</span> students require <span class="highlight-vocab">sufficient rest</span> after an <span class="highlight-vocab">exhausting week</span> of schoolwork. Spending entire weekends on worksheets leaves us feeling fatigued on Monday morning. Having less homework would allow us to get enough sleep, exercise outdoors, and return to school feeling refreshed.</p>
+                <p><span class="highlight-connective">Secondly,</span> reducing homework provides <span class="highlight-vocab">quality family time</span> to pursue <span class="highlight-vocab">extracurricular interests</span>. Weekends are the best opportunity for children to bond with parents or learn creative hobbies, which are equally vital for our personal growth.</p>
+                <p>Some teachers might worry that less homework could lower our <span class="highlight-vocab">academic standard</span>. <span class="highlight-connective">However,</span> teachers could assign shorter, revision-based online exercises instead. This ensures we still revise key concepts without feeling <span class="highlight-vocab">overwhelmed</span>.</p>
+                <p>Thank you very much for taking the time to consider my suggestion. I <span class="highlight-vocab">sincerely hope</span> you will support this idea.</p>
+                <div class="pt-4 border-t border-slate-100">
+                    <p class="font-bold text-slate-800"><span class="highlight-structure">Yours sincerely,</span></p>
+                    <p class="font-semibold text-slate-700">Chris Wong</p>
+                    <p class="text-xs text-slate-500">Class 4B Student Representative</p>
+                </div>`,
+                notes: [
+                    "Standard formal letter structure: Proper salutation (Dear Principal...) and sign-off (Yours sincerely).",
+                    "Clear connectives (First of all, Secondly, However) guide the examiner smoothly through arguments.",
+                    "Advanced vocabulary included: 'sufficient rest', 'exhausting week', 'extracurricular', 'academic standard'.",
+                    "Addresses counter-arguments with a practical solution (online revision tasks)."
+                ]
+            },
+            2: {
+                title: "Topic 8 Exemplar: An Unforgettable Rainy Day",
+                type: "Narrative Story • P4/P5 Exam Target",
+                rawText: `Last Friday afternoon, the sky turned dark grey as school finished. Thick black clouds covered the sun, and strong winds began to howl through the trees. My best friend Leo and I decided to hurry home before the storm started.\n\nSuddenly, torrential rain began to pour down heavily from the sky. Thunder roared loudly like a fierce lion, and bright lightning flashed across the dark clouds. Within minutes, the sidewalk was flooded, and our shoes were completely soaked. We froze in fear as we looked around for shelter.\n\nWithout hesitation, Leo pointed toward a nearby bakery with a wide canopy. We dashed across the street frantically and stepped under the roof just in time. While waiting under the shelter, we noticed an elderly woman struggling to hold her broken umbrella. Swiftly, I offered her my spare raincoat from my backpack.\n\nThe rain finally slowed down after half an hour. The kind woman thanked us warmly for our assistance. Although we were thoroughly wet and cold, helping someone in need warmed my heart. It was truly an unforgettable rainy day.`,
+                htmlContent: `
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest border-b pb-2 mb-4">Text Type: Plot-driven Narrative</p>
+                <p><span class="highlight-structure">Last Friday afternoon,</span> the sky turned dark grey as school finished. Thick black clouds covered the sun, and <span class="highlight-vocab">strong winds began to howl</span> through the trees. My best friend Leo and I decided to hurry home before the storm started.</p>
+                <p><span class="highlight-connective">Suddenly,</span> <span class="highlight-vocab">torrential rain</span> poured down heavily from the sky. Thunder <span class="highlight-vocab">roared loudly like a fierce lion</span>, and bright lightning flashed across the dark clouds. Within minutes, our shoes were completely soaked. We <span class="highlight-emotion">froze in fear</span> as we looked around for shelter.</p>
+                <p><span class="highlight-connective">Without hesitation,</span> Leo pointed toward a nearby bakery with a wide canopy. We <span class="highlight-vocab">dashed frantically</span> across the street and stepped under the roof just in time. While waiting under the shelter, we noticed an elderly woman struggling with a broken umbrella. <span class="highlight-connective">Swiftly,</span> I offered her my spare raincoat from my backpack.</p>
+                <p>The rain finally slowed down after half an hour. The kind woman thanked us warmly for our assistance. <span class="highlight-connective">Although</span> we were thoroughly wet and chilled, helping someone in need <span class="highlight-emotion">warmed my heart</span>. It was truly an <span class="highlight-vocab">unforgettable experience</span>.</p>`,
+                notes: [
+                    "Vivid sensory adjectives & similes: 'roared loudly like a fierce lion', 'torrential rain', 'howl through trees'.",
+                    "Exciting story arc: Normal start → Sudden crisis (thunderstorm) → Problem solving (helping elderly lady) → Meaningful reflection.",
+                    "Past tenses used accurately throughout (poured, flashed, froze, dashed, offered)."
+                ]
+            },
+            3: {
+                title: "Topic 11 Exemplar: A Memorable School Field Trip",
+                type: "Personal Recount • P4/P5 Exam Target",
+                rawText: `Last month, Primary 4 students went on an exciting field trip to the Hong Kong Science Museum. I had been looking forward to this outing for weeks, so I woke up bright and early on that sunny morning.\n\nAs soon as we arrived at the museum, our tour guide showed us the famous Energy Machine. It was a massive structure with spinning wheels and roaring metal balls rolling along long tracks. Next, we explored the Biodiversity Gallery, where we saw realistic models of rare animals and learned about protecting wildlife.\n\nAfter two hours of exploring, we sat together in the courtyard to enjoy our picnic lunch. My classmates and I shared delicious sandwiches and chatted happily about our favorite exhibits.\n\nLooking back, this field trip was not only fun but also educational. It sparkled my curiosity about science, and I hope we can visit the museum again soon.`,
+                htmlContent: `
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest border-b pb-2 mb-4">Text Type: Personal Recount</p>
+                <p><span class="highlight-structure">Last month,</span> Primary 4 students went on an exciting field trip to the Hong Kong Science Museum. I had been <span class="highlight-emotion">looking forward to</span> this outing for weeks, so I woke up <span class="highlight-vocab">bright and early</span> on that sunny morning.</p>
+                <p><span class="highlight-connective">As soon as we arrived,</span> our tour guide showed us the famous Energy Machine. It was a <span class="highlight-vocab">massive structure</span> with spinning wheels and roaring metal balls rolling along tracks. <span class="highlight-connective">Next,</span> we explored the Biodiversity Gallery, where we saw <span class="highlight-vocab">realistic models</span> of rare animals and learned about protecting wildlife.</p>
+                <p><span class="highlight-connective">After two hours of exploring,</span> we sat together in the peaceful courtyard to enjoy our picnic lunch. My classmates and I shared delicious snacks and <span class="highlight-emotion">chatted happily</span> about our favorite exhibits.</p>
+                <p><span class="highlight-connective">Looking back,</span> this field trip was not only fun but also deeply educational. It <span class="highlight-vocab">sparked my curiosity</span> about science, and I hope we can visit again soon.</p>`,
+                notes: [
+                    "Clear chronological order using time markers: 'Last month', 'As soon as we arrived', 'Next', 'After two hours'.",
+                    "Mix of descriptive facts and personal feelings.",
+                    "Strong conclusion reflecting on what was learned ('sparked my curiosity')."
+                ]
+            },
+            4: {
+                title: "Topic 17 Exemplar: A Busy Night Market in Hong Kong",
+                type: "Descriptive Essay • P4/P5 Exam Target",
+                rawText: `Temple Street Night Market is one of the most vibrant and lively places in Hong Kong. Every evening, as darkness falls, the street comes alive with bright neon lights and crowds of eager shoppers.\n\nAs you walk through the market, your eyes are immediately drawn to rows of colorful stalls selling clothes, toys, and traditional souvenirs. Hawkers shout energetically to advertise their bargains, while bargain hunters negotiate lower prices enthusiastically.\n\nIn addition, the mouth-watering aroma of street food fills the air. You can smell sizzling curry fish balls, fragrant stinky tofu, and freshly grilled seafood. The combination of sizzling sounds and appetizing smells makes everyone hungry.\n\nIn conclusion, visiting the night market is a fantastic sensory experience. It showcases the unique street culture and energetic spirit of Hong Kong.`,
+                htmlContent: `
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest border-b pb-2 mb-4">Text Type: Sensory Descriptive Piece</p>
+                <p>Temple Street Night Market is one of the most <span class="highlight-vocab">vibrant and lively</span> places in Hong Kong. Every evening, as darkness falls, the street comes alive with <span class="highlight-vocab">dazzling neon lights</span> and crowds of eager shoppers.</p>
+                <p><span class="highlight-connective">As you walk through the market,</span> your eyes are drawn to rows of colorful stalls selling souvenirs. Hawkers <span class="highlight-vocab">shout energetically</span> to advertise their bargains, while shoppers negotiate prices enthusiastically.</p>
+                <p><span class="highlight-connective">In addition,</span> the <span class="highlight-vocab">mouth-watering aroma</span> of street food fills the air. You can smell <span class="highlight-vocab">sizzling curry fish balls</span> and fragrant snacks. The combination of sounds and appetizing smells creates a cheerful atmosphere.</p>
+                <p><span class="highlight-connective">In conclusion,</span> visiting the night market is a wonderful sensory experience. It showcases the <span class="highlight-vocab">energetic spirit</span> and unique culture of Hong Kong.</p>`,
+                notes: [
+                    "Rich sensory language appealing to sight, sound, and smell.",
+                    "Strong descriptive verbs and adverbs (shout energetically, negotiate enthusiastically, sizzling).",
+                    "Effective structural organization focusing on atmosphere → visuals → smells/tastes → summary."
+                ]
+            }
+        };
+
+        // ----------------------------------------------------
+        // INITIALIZATION & TAB SWITCHING LOGIC
+        // ----------------------------------------------------
+        window.onload = function() {
+            renderGroupedTopics('all', '');
+            renderVocabVault();
+            populateStudioDropdown();
+            loadModelEssay(1);
+        };
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById('tab-' + tabId).classList.remove('hidden');
+
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active', 'bg-brand-50', 'text-brand-600');
+                btn.classList.add('text-slate-600');
+            });
+
+            const activeBtn = document.getElementById('nav-' + tabId);
+            if(activeBtn) {
+                activeBtn.classList.add('active', 'bg-brand-50', 'text-brand-600');
+                activeBtn.classList.remove('text-slate-600');
+            }
+            stopSpeech();
+        }
+
+        // ----------------------------------------------------
+        // TOPICS GROUPED RENDER & SEARCH
+        // ----------------------------------------------------
+        let activeCategoryFilter = 'all';
+
+        function onSearchTopics() {
+            const query = document.getElementById('topic-search-input').value.toLowerCase().trim();
+            renderGroupedTopics(activeCategoryFilter, query);
+        }
+
+        function filterTopics(cat) {
+            activeCategoryFilter = cat;
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.classList.remove('bg-slate-900', 'text-white');
+                btn.classList.add('bg-slate-100', 'text-slate-700');
+            });
+            event.target.classList.remove('bg-slate-100', 'text-slate-700');
+            event.target.classList.add('bg-slate-900', 'text-white');
+
+            const query = document.getElementById('topic-search-input').value.toLowerCase().trim();
+            renderGroupedTopics(cat, query);
+        }
+
+        function renderGroupedTopics(categoryFilter, searchQuery) {
+            const container = document.getElementById('topics-category-container');
+            container.innerHTML = '';
+
+            const categoriesToRender = categoryFilter === 'all' 
+                ? ['persuasive', 'narrative', 'recount', 'descriptive'] 
+                : [categoryFilter];
+
+            let hasMatches = false;
+
+            categoriesToRender.forEach(catKey => {
+                const catInfo = CATEGORIES_INFO[catKey];
+                let topicsInCat = TOPICS_DATA.filter(t => t.cat === catKey);
+
+                if (searchQuery) {
+                    topicsInCat = topicsInCat.filter(t => 
+                        t.title.toLowerCase().includes(searchQuery) ||
+                        t.prompt.toLowerCase().includes(searchQuery) ||
+                        t.vocab.some(v => v.toLowerCase().includes(searchQuery))
+                    );
+                }
+
+                if (topicsInCat.length === 0) return;
+                hasMatches = true;
+
+                // Create Section for this Category
+                const section = document.createElement('div');
+                section.className = 'space-y-4';
+
+                section.innerHTML = `
+                    <div class="flex items-center gap-2 pb-2 border-b border-slate-200">
+                        <i class="fa-solid ${catInfo.icon} text-lg text-slate-700"></i>
+                        <h4 class="font-bold text-slate-900 text-base sm:text-lg">${catInfo.title}</h4>
+                        <span class="ml-auto text-xs font-bold px-2.5 py-0.5 rounded-full border ${catInfo.badge}">
+                            ${topicsInCat.length} ${topicsInCat.length === 1 ? 'Topic' : 'Topics'}
+                        </span>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                        ${topicsInCat.map(topic => `
+                            <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between space-y-4">
+                                <div>
+                                    <div class="flex items-center justify-between gap-2 mb-2">
+                                        <span class="px-2.5 py-1 rounded-lg text-xs font-bold ${catInfo.badge}">${topic.type}</span>
+                                        <span class="text-xs font-bold text-slate-400">P4 / P5 Exam Target</span>
+                                    </div>
+                                    <h5 class="font-bold text-slate-900 text-base leading-snug mb-2">${topic.title}</h5>
+                                    <p class="text-xs text-slate-600 mb-3 leading-relaxed">${topic.prompt}</p>
+                                    
+                                    <div class="p-3 bg-slate-50 rounded-xl space-y-1.5 border border-slate-100 text-xs">
+                                        <p class="font-bold text-slate-700"><i class="fa-solid fa-sitemap text-brand-500 mr-1"></i> Structure Plan:</p>
+                                        <p class="text-slate-600">${topic.structure}</p>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="mb-3">
+                                        <p class="text-xs font-bold text-slate-500 mb-1"><i class="fa-solid fa-key text-amber-500 mr-1"></i> Suggested Vocab:</p>
+                                        <div class="flex flex-wrap gap-1">
+                                            ${topic.vocab.map(v => `<span onclick="speakWord('${v}')" class="px-2 py-0.5 rounded bg-slate-100 hover:bg-amber-100 text-slate-700 hover:text-amber-900 text-[11px] font-medium border border-slate-200 cursor-pointer transition" title="Click to pronounce">${v} <i class="fa-solid fa-volume-high text-[9px] text-slate-400"></i></span>`).join('')}
+                                        </div>
+                                    </div>
+
+                                    <div class="flex gap-2 pt-2 border-t border-slate-100">
+                                        <button onclick="selectTopicForStudio(${topic.id})" class="flex-1 bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold py-2 rounded-xl text-xs transition flex items-center justify-center gap-1">
+                                            <i class="fa-solid fa-pen-to-square"></i> Plan in Studio
+                                        </button>
+                                        <button onclick="switchTab('models'); loadModelEssay(${topic.sampleId});" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold px-3 py-2 rounded-xl text-xs transition">
+                                            <i class="fa-solid fa-eye"></i> View Sample
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+
+                container.appendChild(section);
+            });
+
+            if (!hasMatches) {
+                container.innerHTML = `
+                    <div class="text-center py-12 bg-white rounded-2xl border border-slate-200">
+                        <i class="fa-solid fa-magnifying-glass text-3xl text-slate-300 mb-2"></i>
+                        <p class="font-bold text-slate-700 text-sm">No topics match your search criteria.</p>
+                        <p class="text-xs text-slate-400">Try searching for keywords like "letter", "rainy", or "market".</p>
+                    </div>
+                `;
+            }
+        }
+
+        // ----------------------------------------------------
+        // VOCABULARY VAULT RENDERER
+        // ----------------------------------------------------
+        function renderVocabVault() {
+            // Render Basic -> Upgraded Converter
+            const upgradedGrid = document.getElementById('upgraded-words-grid');
+            upgradedGrid.innerHTML = BASIC_TO_UPGRADED.map(item => `
+                <div class="p-3 bg-slate-50 hover:bg-amber-50/50 rounded-2xl border border-slate-200 transition space-y-1">
+                    <div class="flex items-center justify-between text-xs">
+                        <span class="text-slate-400 line-through">${item.basic}</span>
+                        <i class="fa-solid fa-arrow-right text-emerald-500 text-[10px]"></i>
+                        <span class="font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded">${item.upgraded}</span>
+                    </div>
+                    <p class="text-[11px] text-slate-500 italic">e.g. "${item.example}"</p>
+                </div>
+            `).join('');
+
+            switchVocabCategory('all');
+        }
+
+        function switchVocabCategory(catKey) {
+            document.querySelectorAll('.vcat-btn').forEach(btn => {
+                btn.classList.remove('bg-slate-900', 'text-white');
+                btn.classList.add('bg-slate-100', 'text-slate-700');
+            });
+            if(event && event.target) {
+                event.target.classList.remove('bg-slate-100', 'text-slate-700');
+                event.target.classList.add('bg-slate-900', 'text-white');
+            }
+
+            const cardsGrid = document.getElementById('vocab-cards-grid');
+            const items = catKey === 'all' 
+                ? DETAILED_VOCAB_BANK 
+                : DETAILED_VOCAB_BANK.filter(v => v.cat === catKey);
+
+            cardsGrid.innerHTML = items.map(v => `
+                <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 hover:border-brand-300 hover:shadow-sm transition space-y-2 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between gap-1 mb-1">
+                            <span class="font-extrabold text-sm text-slate-900">${v.word}</span>
+                            <button onclick="speakWord('${v.word}')" class="text-slate-400 hover:text-brand-600 text-xs p-1">
+                                <i class="fa-solid fa-volume-high"></i>
+                            </button>
+                        </div>
+                        <div class="flex items-center gap-2 text-[11px] text-slate-500 mb-2">
+                            <span class="italic font-medium">${v.pos}</span>
+                            <span>•</span>
+                            <span class="font-semibold text-brand-700">${v.translation}</span>
+                        </div>
+                        <p class="text-xs text-slate-600 bg-white p-2.5 rounded-xl border border-slate-100">
+                            "${v.example}"
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between pt-2 text-[11px] text-slate-400 border-t border-slate-200/60">
+                        <span>Used in ${v.topic}</span>
+                        <button onclick="insertWord('${v.word}')" class="font-bold text-brand-600 hover:text-brand-800">
+                            + Add to Studio
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function speakWord(wordText) {
+            if (!window.speechSynthesis) return;
+            window.speechSynthesis.cancel();
+            const u = new SpeechSynthesisUtterance(wordText);
+            u.rate = 0.85;
+            u.lang = 'en-US';
+            window.speechSynthesis.speak(u);
+            showToast(`Pronouncing: "${wordText}"`);
+        }
+
+        // ----------------------------------------------------
+        // MODEL ESSAY DISPLAY & HIGHLIGHT TOGGLES
+        // ----------------------------------------------------
+        let currentEssayId = 1;
+
+        function loadModelEssay(essayId) {
+            currentEssayId = essayId;
+            stopSpeech();
+
+            document.querySelectorAll('.essay-tab-btn').forEach(btn => {
+                btn.classList.remove('bg-brand-600', 'text-white', 'active');
+                btn.classList.add('bg-slate-100', 'text-slate-700');
+            });
+            const activeBtn = document.getElementById(`essay-btn-${essayId}`);
+            if(activeBtn) {
+                activeBtn.classList.add('bg-brand-600', 'text-white', 'active');
+                activeBtn.classList.remove('bg-slate-100', 'text-slate-700');
+            }
+
+            const data = MODEL_ESSAYS[essayId];
+            document.getElementById('essay-display-container').innerHTML = `
+                <div class="mb-2">
+                    <span class="text-xs font-bold text-brand-600 bg-brand-50 px-3 py-1 rounded-full">${data.type}</span>
+                    <h3 class="text-lg font-bold text-slate-900 mt-2">${data.title}</h3>
+                </div>
+                ${data.htmlContent}
+            `;
+
+            const breakdownList = document.getElementById('essay-breakdown-list');
+            breakdownList.innerHTML = data.notes.map(n => `<li>${n}</li>`).join('');
+
+            updateEssayHighlights();
+        }
+
+        function updateEssayHighlights() {
+            const showConn = document.getElementById('hl-connective').checked;
+            const showVocab = document.getElementById('hl-vocab').checked;
+            const showStruct = document.getElementById('hl-structure').checked;
+
+            document.querySelectorAll('.highlight-connective').forEach(el => {
+                el.style.backgroundColor = showConn ? '#fef08a' : 'transparent';
+                el.style.fontWeight = showConn ? '600' : 'normal';
+            });
+            document.querySelectorAll('.highlight-vocab').forEach(el => {
+                el.style.backgroundColor = showVocab ? '#bbf7d0' : 'transparent';
+                el.style.fontWeight = showVocab ? '600' : 'normal';
+            });
+            document.querySelectorAll('.highlight-structure').forEach(el => {
+                el.style.backgroundColor = showStruct ? '#bfdbfe' : 'transparent';
+                el.style.fontWeight = showStruct ? '600' : 'normal';
+            });
+        }
+
+        // ----------------------------------------------------
+        // SPEECH SYNTHESIS ENGINE (READ-ALOUD)
+        // ----------------------------------------------------
+        let speechSynth = window.speechSynthesis;
+        let speechUtterance = null;
+
+        function speakCurrentEssay() {
+            stopSpeech();
+            if(!speechSynth) {
+                showToast("Speech synthesis not supported in this browser.");
+                return;
+            }
+
+            const rawText = MODEL_ESSAYS[currentEssayId].rawText;
+            speechUtterance = new SpeechSynthesisUtterance(rawText);
+            speechUtterance.rate = 0.85; // slightly slower for 9-year-old listening comprehension
+            speechUtterance.pitch = 1.0;
+            speechUtterance.lang = 'en-US';
+
+            speechUtterance.onstart = function() {
+                document.getElementById('speech-status').innerText = '🔊 Reading aloud...';
+                document.getElementById('play-btn').classList.add('animate-pulse');
+            };
+
+            speechUtterance.onend = function() {
+                document.getElementById('speech-status').innerText = 'Ready';
+                document.getElementById('play-btn').classList.remove('animate-pulse');
+            };
+
+            speechSynth.speak(speechUtterance);
+        }
+
+        function stopSpeech() {
+            if(speechSynth && speechSynth.speaking) {
+                speechSynth.cancel();
+            }
+            const statusEl = document.getElementById('speech-status');
+            if(statusEl) statusEl.innerText = 'Ready';
+            const playBtn = document.getElementById('play-btn');
+            if(playBtn) playBtn.classList.remove('animate-pulse');
+        }
+
+        // ----------------------------------------------------
+        // OUTLINE & STUDIO LOGIC
+        // ----------------------------------------------------
+        function populateStudioDropdown() {
+            const select = document.getElementById('studio-topic-select');
+            select.innerHTML = TOPICS_DATA.map(t => `<option value="${t.id}">${t.title}</option>`).join('');
+            loadStudioTopic();
+        }
+
+        function selectTopicForStudio(topicId) {
+            switchTab('studio');
+            const select = document.getElementById('studio-topic-select');
+            select.value = topicId;
+            loadStudioTopic();
+        }
+
+        function loadStudioTopic() {
+            const id = parseInt(document.getElementById('studio-topic-select').value);
+            const topic = TOPICS_DATA.find(t => t.id === id);
+
+            if(!topic) return;
+
+            document.getElementById('studio-prompt-title').innerText = topic.title;
+            document.getElementById('studio-prompt-desc').innerText = topic.prompt;
+
+            // Render helper vocabulary bank
+            const helperBox = document.getElementById('dynamic-word-bank');
+            helperBox.innerHTML = `
+                <div>
+                    <span class="text-xs font-bold text-slate-500 block mb-1">Recommended Key Vocabulary:</span>
+                    <div class="flex flex-wrap gap-1.5">
+                        ${topic.vocab.map(v => `<button onclick="insertWord('${v}')" class="px-2.5 py-1 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-200 text-xs font-semibold transition">+ ${v}</button>`).join('')}
+                    </div>
+                </div>
+                <div class="pt-2">
+                    <span class="text-xs font-bold text-slate-500 block mb-1">Sentence Starter Cheat Phrases:</span>
+                    <div class="flex flex-wrap gap-1.5">
+                        <button onclick="insertWord('First of all, ')" class="px-2 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium">+ First of all,</button>
+                        <button onclick="insertWord('Secondly, ')" class="px-2 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium">+ Secondly,</button>
+                        <button onclick="insertWord('However, ')" class="px-2 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium">+ However,</button>
+                        <button onclick="insertWord('I strongly believe that ')" class="px-2 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium">+ I strongly believe...</button>
+                        <button onclick="insertWord('Without hesitation, ')" class="px-2 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium">+ Without hesitation,</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function insertWord(word) {
+            // Inserts into currently focused textarea or paragraph 1 by default
+            const activeEl = document.activeElement;
+            if(activeEl && activeEl.tagName === 'TEXTAREA') {
+                activeEl.value += (activeEl.value ? ' ' : '') + word;
+            } else {
+                const p1 = document.getElementById('outline-p1');
+                p1.value += (p1.value ? ' ' : '') + word;
+            }
+            updateWordCount();
+            showToast(`Added "${word}" to draft!`);
+        }
+
+        function updateWordCount() {
+            const p1 = document.getElementById('outline-p1').value;
+            const p2 = document.getElementById('outline-p2').value;
+            const p3 = document.getElementById('outline-p3').value;
+            const p4 = document.getElementById('outline-p4').value;
+
+            const fullText = `${p1} ${p2} ${p3} ${p4}`.trim();
+            const words = fullText ? fullText.split(/\s+/).length : 0;
+
+            document.getElementById('word-count-display').innerText = words;
+        }
+
+        function resetStudio() {
+            document.getElementById('outline-p1').value = '';
+            document.getElementById('outline-p2').value = '';
+            document.getElementById('outline-p3').value = '';
+            document.getElementById('outline-p4').value = '';
+            updateWordCount();
+            showToast("Studio fields reset!");
+        }
+
+        function copyFullDraft() {
+            const p1 = document.getElementById('outline-p1').value;
+            const p2 = document.getElementById('outline-p2').value;
+            const p3 = document.getElementById('outline-p3').value;
+            const p4 = document.getElementById('outline-p4').value;
+
+            const fullDraft = `${p1}\n\n${p2}\n\n${p3}\n\n${p4}`.trim();
+
+            if(!fullDraft) {
+                showToast("Please write something in the draft fields first!");
+                return;
+            }
+
+            const tempInput = document.createElement('textarea');
+            tempInput.value = fullDraft;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            showToast("Full essay draft copied to clipboard!");
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-msg').innerText = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+                toast.classList.remove('translate-y-0', 'opacity-100');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
